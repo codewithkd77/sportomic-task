@@ -177,6 +177,4 @@ For questions or support, open an issue or contact the maintainer.
 
 ---
 
-## 📄 License
 
-MIT
