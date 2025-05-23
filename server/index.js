@@ -194,16 +194,20 @@ app.put('/bookings/:id', async (req, res) => {
 // DELETE /bookings/:id endpoint
 app.delete('/bookings/:id', async (req, res) => {
   const { id } = req.params;
+  console.log('Attempting to delete booking with id:', id); // Add this line
   try {
-    // Ensure id is a number if your DB expects integer IDs
     const { error } = await supabase
       .from('bookings')
       .delete()
       .eq('id', Number(id));
 
-    if (error) throw error;
+    if (error) {
+      console.error('Supabase delete error:', error); // Add this line
+      throw error;
+    }
     res.json({ message: 'Booking deleted successfully' });
   } catch (err) {
+    console.error('Error deleting booking:', err); // Add this line
     res.status(500).json({ error: 'Error deleting booking' });
   }
 });
