@@ -19,21 +19,24 @@ app.use(cors({
   credentials: true
 }));
 
-app.use(bodyParser.json());{
-  "version": 2,
-  "builds": [
+app.use(bodyParser.json());
+
+// Vercel configuration object (if needed, move to a separate file)
+const vercelConfig = {
+  version: 2,
+  builds: [
     {
-      "src": "server/index.js",
-      "use": "@vercel/node"
+      src: "server/index.js",
+      use: "@vercel/node"
     }
   ],
-  "routes": [
+  routes: [
     {
-      "src": "/(.*)",
-      "dest": "server/index.js"
+      src: "/(.*)",
+      dest: "server/index.js"
     }
   ]
-}
+};
 
 // Initialize venues if they don't exist
 const initializeVenues = async () => {
