@@ -191,6 +191,22 @@ app.put('/bookings/:id', async (req, res) => {
   }
 });
 
+// DELETE /bookings/:id endpoint
+app.delete('/bookings/:id', async (req, res) => {
+  const { id } = req.params;
+  try {
+    const { error } = await supabase
+      .from('bookings')
+      .delete()
+      .eq('id', id);
+
+    if (error) throw error;
+    res.json({ message: 'Booking deleted successfully' });
+  } catch (err) {
+    res.status(500).json({ error: 'Error deleting booking' });
+  }
+});
+
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
