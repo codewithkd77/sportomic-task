@@ -12,7 +12,7 @@ function AdminPortal() {
   const fetchBookings = async () => {
     try {
       setIsLoading(true);
-      const response = await fetch('http://localhost:5000/bookings');
+      const response = await fetch('https://sportomic-task-backend.onrender.com/bookings');
       const data = await response.json();
       if (response.ok) {
         setBookings(data);
