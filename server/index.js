@@ -171,6 +171,26 @@ app.get('/bookings', async (req, res) => {
   }
 });
 
+// UPDATE /bookings/:id endpoint
+app.put('/bookings/:id', async (req, res) => {
+  const { id } = req.params;
+  const { name, sport, venue, date, time_slot } = req.body;
+
+  try {
+    const { data, error } = await supabase
+      .from('bookings')
+      .update({ name, sport, venue, date, time_slot })
+      .eq('id', id)
+      .select()
+      .single();
+
+    if (error) throw error;
+    res.json({ message: 'Booking updated successfully', booking: data });
+  } catch (err) {
+    res.status(500).json({ error: 'Error updating booking' });
+  }
+});
+
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
