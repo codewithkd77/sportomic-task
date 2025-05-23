@@ -1,0 +1,101 @@
+.navbar {
+  background: #1e3a8a; /* Darker blue */
+  color: #fff;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  flex-wrap: wrap;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-right: 1rem;
+}
+
+.navbar-link {
+  background: none;
+  border: none;
+  color: #bfdbfe; /* Lighter blue */
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: color 0.2s, background 0.2s;
+}
+
+.navbar-link:hover,
+.navbar-link:focus {
+  color: #fff;
+  background: #3b82f6; /* Blue */
+  outline: none;
+}
+
+.bookings-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 2rem;
+  background: #fff;
+  color: #222;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  padding: 1rem;
+  width: 300px;
+  max-height: 400px;
+  overflow-y: auto;
+  z-index: 999;
+}
+
+.bookings-dropdown h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #1e3a8a;
+  font-size: 1.2rem;
+}
+
+.booking-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  font-size: 0.9rem;
+}
+
+.booking-item {
+  background: #e0e7ef; /* Very light blue */
+  color: #222;
+  padding: 0.6rem 0.8rem;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+}
+
+.booking-item p {
+    margin: 0;
+    line-height: 1.4;
+}
+
+.booking-item strong {
+    color: #1e3a8a; /* Darker blue */
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+  .navbar-brand {
+    margin-bottom: 0.5rem;
+    margin-right: 0;
+  }
+  .bookings-dropdown {
+      right: 1rem;
+      left: 1rem;
+      width: auto;
+  }
+} 
