@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './AdminPortal.css';
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 function AdminPortal() {
   const [bookings, setBookings] = useState([]);
   const [selectedBooking, setSelectedBooking] = useState(null);
@@ -12,7 +14,7 @@ function AdminPortal() {
   const fetchBookings = async () => {
     try {
       setIsLoading(true);
-      const response = await fetch('https://sportomic-task-backend.onrender.com/bookings');
+      const response = await fetch(`${API_URL}/bookings`);
       const data = await response.json();
       if (response.ok) {
         setBookings(data);
@@ -201,4 +203,4 @@ function AdminPortal() {
   );
 }
 
-export default AdminPortal; 
+export default AdminPortal;
