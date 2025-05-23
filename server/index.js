@@ -195,10 +195,11 @@ app.put('/bookings/:id', async (req, res) => {
 app.delete('/bookings/:id', async (req, res) => {
   const { id } = req.params;
   try {
+    // Ensure id is a number if your DB expects integer IDs
     const { error } = await supabase
       .from('bookings')
       .delete()
-      .eq('id', id);
+      .eq('id', Number(id));
 
     if (error) throw error;
     res.json({ message: 'Booking deleted successfully' });
