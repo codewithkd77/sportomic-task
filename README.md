@@ -176,5 +176,3 @@ npm start
 For questions or support, open an issue or contact the maintainer.
 
 ---
-
-
