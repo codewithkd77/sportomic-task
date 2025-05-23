@@ -45,7 +45,7 @@ function AdminPortal() {
         setIsLoading(true);
         console.log('Cancelling booking with ID:', bookingId);
 
-        const response = await fetch(`http://localhost:5000/bookings/${bookingId}`, {
+        const response = await fetch(`${API_URL}/bookings/${bookingId}`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
@@ -56,8 +56,7 @@ function AdminPortal() {
         console.log('Delete response:', data);
 
         if (response.ok) {
-          // Remove the cancelled booking from the state
-          setBookings(prevBookings => prevBookings.filter(booking => booking.id === bookingId ? false : true));
+          setBookings(prevBookings => prevBookings.filter(booking => booking.id !== bookingId));
           alert('Booking cancelled successfully');
         } else {
           throw new Error(data.error || 'Failed to cancel booking');
@@ -74,7 +73,7 @@ function AdminPortal() {
 
   const handleSave = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/bookings/${editedBooking.id}`, {
+      const response = await fetch(`${API_URL}/bookings/${editedBooking.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
