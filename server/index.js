@@ -11,8 +11,7 @@ const port = process.env.PORT || 5000;
 app.use(cors({
   origin: [
     'http://localhost:3000',
-    'https://sportomic-task-2.vercel.app',
-    'https://sportomic-task-0.vercel.app'
+    'https://sportomic-task-main.vercel.app'
   ],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
