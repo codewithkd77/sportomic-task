@@ -9,13 +9,31 @@ const port = process.env.PORT || 5000;
 
 // Update CORS configuration to allow your client domain
 app.use(cors({
-  origin: ['http://localhost:3000', 'https://sportomic-task-2.vercel.app'],
+  origin: [
+    'http://localhost:3000',
+    'https://sportomic-task-2.vercel.app',
+    'https://sportomic-task-0.vercel.app'
+  ],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
 }));
 
-app.use(bodyParser.json());
+app.use(bodyParser.json());{
+  "version": 2,
+  "builds": [
+    {
+      "src": "server/index.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "server/index.js"
+    }
+  ]
+}
 
 // Initialize venues if they don't exist
 const initializeVenues = async () => {
